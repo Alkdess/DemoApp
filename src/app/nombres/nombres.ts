@@ -8,7 +8,7 @@ import { CommonModule  } from '@angular/common';
   imports: [CommonModule],
   standalone: true,
   templateUrl: './nombres.html',
-  styleUrl: './nombres.scss'
+  styleUrls: ['./nombres.scss']
 })
 
 export class Nombres implements OnInit {
