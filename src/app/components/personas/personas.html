@@ -1,24 +1,59 @@
-<div class="box is-flex is-justify-content-center">
-  <div *ngIf="cargando">... Cargando los datos</div>
-  
-  <table class="table has-text-black" *ngIf="!cargando && datos.length > 0">
-    <thead>
-      <tr>
-        <td>ID</td>
-        <td>Nombre</td>
-        <td>Direccion</td>
-        <td>Fecha Registro</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let persona of datos">
-        <td>{{ persona.id }}</td>
-        <td>{{ persona.fullName }}</td>
-        <td>{{ persona.address }}</td>
-        <td>{{ persona.update_Date }}</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  <div *ngIf="!cargando && datos.length === 0">No hay personas registradas</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div *ngIf="cargando">... Cargando los datos</div>
+      
+      <div class="d-flex fs-4 mb-3 mt-4 justify-content-between">
+        <div class=""><em class="fa fa-user"></em> Usuarios Registrados</div>
+        <div>
+          <button class="btn btn-sm {{ verForm ? 'btn-danger' : 'btn-success' }}" (click)="toggleForm()">
+            <span *ngIf="verForm">
+              <em class="fa fa-xmark"></em> Cancelar
+            </span>
+            <span *ngIf="!verForm">
+              <em class="fa fa-plus"></em> Agregar Persona
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="mb-3 bt-2" *ngIf="verForm">
+        <div>Registrar nuevo usuario</div>
+        <form (ngSubmit)="guardarRegistro()" #formPersona="ngForm">
+          <div class="mb-2">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" id="nombre" class="form-control" [(ngModel)]="nuevoRegistro.fullName" name="fullName" required>
+          </div>
+          <div class="mb-2">
+            <label for="direccion" class="form-label">Dirección</label>
+            <input type="text" id="direccion" class="form-control" [(ngModel)]="nuevoRegistro.address" name="address" required>
+          </div>
+          <button type="submit" [disabled]="!formPersona.valid" class="btn btn-sm btn-primary">Registrar</button>
+        </form>
+      </div>
+      <div>
+        <table class="table table-hover" *ngIf="!cargando && datos.length > 0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Direccion</th>
+              <th>Fecha Registro</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let persona of datos">
+              <td>{{ persona.id }}</td>
+              <td>{{ persona.fullName }}</td>
+              <td>{{ persona.address }}</td>
+              <td>{{ persona.update_Date }}</td>
+              <td>...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div *ngIf="!cargando && datos.length === 0">No hay personas registradas</div>
+    </div>
+  </div>
 </div>

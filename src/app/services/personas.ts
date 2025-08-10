@@ -23,4 +23,7 @@ export class Personas {
     return this.http.get<Persona[]>(this.apiUrl);
   }
 
+  agregarPersona(nuevaPersona: Partial<Persona>) {
+    return this.http.post(this.apiUrl, nuevaPersona);
+  }
 }
