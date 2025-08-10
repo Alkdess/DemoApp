@@ -1,0 +1,24 @@
+<div class="box is-flex is-justify-content-center">
+  <div *ngIf="cargando">... Cargando los datos</div>
+  
+  <table class="table has-text-black" *ngIf="!cargando && datos.length > 0">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Nombre</td>
+        <td>Direccion</td>
+        <td>Fecha Registro</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let persona of datos">
+        <td>{{ persona.id }}</td>
+        <td>{{ persona.fullName }}</td>
+        <td>{{ persona.address }}</td>
+        <td>{{ persona.update_Date }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div *ngIf="!cargando && datos.length === 0">No hay personas registradas</div>
+</div>

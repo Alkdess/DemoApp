@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ListNombres } from '../services/nombres';
+import { ListNombres } from '../../services/nombres';
 import { CommonModule  } from '@angular/common';
 
 

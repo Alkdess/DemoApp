@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Demo } from '../services/demo';
+import { Demo } from '../../services/demo';
 
 @Component({
   selector: 'app-saludo',
